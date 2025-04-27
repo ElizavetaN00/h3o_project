@@ -21,3 +21,7 @@ class BasePage:
     def get_visibility(self, locator):
         input_field = self.driver.find_element(*locator)
         return input_field.is_displayed()
+
+    def is_url_correct(self, url):
+        return self.driver.current_url == url, (f"Expected to get {url} "
+                                                f"but got {self.driver.current_url}")

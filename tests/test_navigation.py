@@ -12,3 +12,12 @@ def test_open_start_page(driver):
 
     assert osp.get_title() == title
     assert osp.get_visibility(title_locator) is True
+
+
+def test_here_link(driver):
+    hl = BasePage(driver, Env.url)
+    hl.open()
+    here_link_locator = By.XPATH, '//div//a'
+    hl.click_button(here_link_locator)
+
+    assert hl.is_url_correct(Env.documenter)
