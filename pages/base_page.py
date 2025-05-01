@@ -1,3 +1,7 @@
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as ec
+
+
 class BasePage:
     def __init__(self, driver, url):
         self.driver = driver
@@ -25,3 +29,7 @@ class BasePage:
     def is_url_correct(self, url):
         return self.driver.current_url == url, (f"Expected to get {url} "
                                                 f"but got {self.driver.current_url}")
+
+    def waiting_for_all_elements(self, locator):
+        wait = WebDriverWait(self.driver, 10)
+        return wait.until(ec.presence_of_all_elements_located(locator))
