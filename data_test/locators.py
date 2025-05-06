@@ -1,5 +1,4 @@
 import dataclasses
-
 from selenium.webdriver.common.by import By
 
 
@@ -11,6 +10,7 @@ class StartPageLocators:
     password = By.XPATH, "//input[@id='password']"
     submit_button = By.XPATH, "//button[@id='submit']"
     sign_up_button = By.XPATH, "//button[@id='signup']"
+
 
 @dataclasses.dataclass
 class AddUserLocators(StartPageLocators):
@@ -34,7 +34,6 @@ class ContactListPageLocators:
     headers = By.XPATH, '//table[@class="contactTable"]//thead//th'
     add_contact_button = By.XPATH, "//button[@id='add-contact']"
     logout_button = By.XPATH, "//button[@id='logout']"
-
     # table?
 
 
@@ -72,4 +71,3 @@ class ContactDetailsPageLocators:
     edit_button = By.XPATH, "//button[@id='edit-contact']"
     delete_button = By.XPATH, "//button[@id='delete']"
     return_button = By.XPATH, "//button[@id='return']"
-
