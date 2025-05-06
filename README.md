@@ -29,4 +29,3 @@ h3o_project/
 ├── README.md
 └── requirements.txt
 ```
-test rule
