@@ -71,3 +71,4 @@ class ContactDetailsPageLocators:
     edit_button = By.XPATH, "//button[@id='edit-contact']"
     delete_button = By.XPATH, "//button[@id='delete']"
     return_button = By.XPATH, "//button[@id='return']"
+    
