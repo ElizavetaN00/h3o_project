@@ -2,7 +2,6 @@ import requests
 import pytest
 import json
 from tests.API_tests.Helper.send_r import send_request
-from tests.API_tests.conftest import read_config, read_cut
 
 
 @pytest.mark.add_user

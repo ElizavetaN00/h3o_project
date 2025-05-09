@@ -4,8 +4,8 @@ import pytest
 
 @pytest.fixture
 def read_config():
-    with open ("../Test_Data/config.json") as f:
-        data =  json.load(f)
+    with open("../Test_Data/config.json") as f:
+        data = json.load(f)
     return data
 
 
