@@ -3,6 +3,7 @@ import pytest
 import requests
 from tests.API_tests.conftest import read_config
 
+
 @pytest.mark.get_user_profile
 def test_get_user_profile(read_config):
     url = f"{read_config['URL']}/me"
