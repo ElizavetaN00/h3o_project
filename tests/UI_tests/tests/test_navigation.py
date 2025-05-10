@@ -1,6 +1,6 @@
-from data_test.env import Env
-from data_test.locators import StartPageLocators
-from pages.base_page import BasePage
+from tests.UI_tests.data_test.env import Env
+from tests.UI_tests.data_test.locators import StartPageLocators
+from tests.UI_tests.pages.base_page import BasePage
 
 
 def test_open_start_page(driver):

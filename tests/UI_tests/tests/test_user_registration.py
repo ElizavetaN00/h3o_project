@@ -1,7 +1,7 @@
-from data_test.creds import AddUserCreds
-from data_test.env import Env
-from data_test.locators import StartPageLocators, AddUserLocators, ContactListPageLocators
-from pages.base_page import BasePage
+from tests.UI_tests.data_test.creds import AddUserCreds
+from tests.UI_tests.data_test.env import Env
+from tests.UI_tests.data_test.locators import StartPageLocators, AddUserLocators, ContactListPageLocators
+from tests.UI_tests.pages.base_page import BasePage
 
 
 def test_valid_credentials(driver):
