@@ -1,16 +1,25 @@
 import requests
 import pytest
 import json
+import os
 
 
 @pytest.mark.login
 def test_user_login():
     url = "https://thinking-tester-contact-list.herokuapp.com/users/login"
 
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    user_file = os.path.join(current_dir, "..", "Test_Data", "create_user_template.json")
+    user_file = os.path.normpath(user_file)
+
+    with open(user_file, 'r', encoding='utf-8') as file:
+        user_data = json.load(file)
+
     payload = {
-        "email": "testmailforzv123@fake.com",
-        "password": "myNewPazzword"
+        "email": user_data["email"],
+        "password": user_data["password"]
     }
+
     headers = {
         'Content-Type': 'application/json'
     }
