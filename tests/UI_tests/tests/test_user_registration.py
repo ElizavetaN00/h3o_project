@@ -126,3 +126,14 @@ def test_with_spaces_in_email(driver):
     spaces_email.click_button(RegistrationPageLocators.submit_button)
 
     assert spaces_email.is_url_correct(Env.contact_list_url)
+
+
+def test_with_uppercase_in_email(driver):
+    uppercase_email = AddUserPage(driver, Env.addUser_url)
+    uppercase_email.enter_data(AddUserCreds.first_name,
+                               AddUserCreds.last_name,
+                               AddUserCreds.email.upper(),
+                               AddUserCreds.password)
+    uppercase_email.click_button(RegistrationPageLocators.submit_button)
+
+    assert uppercase_email.is_url_correct(Env.contact_list_url)
