@@ -137,3 +137,14 @@ def test_with_uppercase_in_email(driver):
     uppercase_email.click_button(RegistrationPageLocators.submit_button)
 
     assert uppercase_email.is_url_correct(Env.contact_list_url)
+
+
+def test_with_min_length_fields(driver):
+    min_len = AddUserPage(driver, Env.addUser_url)
+    min_len.enter_data(AddUserCreds.first_name[0],
+                       AddUserCreds.last_name[0],
+                       AddUserCreds.email,
+                       AddUserCreds.password[:7])
+    min_len.click_button(RegistrationPageLocators.submit_button)
+
+    assert min_len.is_url_correct(Env.contact_list_url)
