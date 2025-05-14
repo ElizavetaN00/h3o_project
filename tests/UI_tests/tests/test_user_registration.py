@@ -89,3 +89,16 @@ def test_already_registered_email(driver):
     alreem.click_button(RegistrationPageLocators.submit_button)
 
     assert alreem.get_error_message() == error_alreem
+
+
+def test_invalid_email_1(driver):
+    error_invalid_email = 'User validation failed: email: Email is invalid'
+
+    invalid_email = AddUserPage(driver, Env.addUser_url)
+    invalid_email.enter_data(AddUserCreds.first_name,
+                             AddUserCreds.last_name,
+                             AddUserCreds.email[:9] + AddUserCreds.email[10:],
+                             AddUserCreds.password)
+    invalid_email.click_button(RegistrationPageLocators.submit_button)
+
+    assert invalid_email.get_error_message() == error_invalid_email
