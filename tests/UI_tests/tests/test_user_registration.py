@@ -62,3 +62,17 @@ def test_empty_email(driver):
     empty_email.click_button(RegistrationPageLocators.submit_button)
 
     assert empty_email.get_error_message() == error_email
+
+
+def test_empty_password(driver):
+    error_password = 'User validation failed: password: Path `password` is required.'
+
+    empty_password = AddUserPage(driver, Env.addUser_url)
+    empty_password.enter_data(AddUserCreds.first_name,
+                              AddUserCreds.last_name,
+                              AddUserCreds.email,
+                              ''
+                              )
+    empty_password.click_button(RegistrationPageLocators.submit_button)
+
+    assert empty_password.get_error_message() == error_password
