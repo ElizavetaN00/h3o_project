@@ -18,7 +18,7 @@ def test_valid_credentials(driver):
     headers_elements = valcreds.waiting_for_all_elements(ContactListPageLocators.headers)
     headers = [header.text for header in headers_elements]
 
-    assert valcreds.is_url_correct(Env.contact_list)
+    assert valcreds.is_url_correct(Env.contact_list_url)
     assert headers == headers_contact_list
 
 
@@ -115,3 +115,14 @@ def test_invalid_email_2(driver):
     invalid_email.click_button(RegistrationPageLocators.submit_button)
 
     assert invalid_email.get_error_message() == error_invalid_email
+
+
+def test_with_spaces_in_email(driver):
+    spaces_email = AddUserPage(driver, Env.addUser_url)
+    spaces_email.enter_data(AddUserCreds.first_name,
+                             AddUserCreds.last_name,
+                             AddUserCreds.email + '   ',
+                             AddUserCreds.password)
+    spaces_email.click_button(RegistrationPageLocators.submit_button)
+
+    assert spaces_email.is_url_correct(Env.contact_list_url)
