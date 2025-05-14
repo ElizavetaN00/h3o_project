@@ -76,3 +76,16 @@ def test_empty_password(driver):
     empty_password.click_button(RegistrationPageLocators.submit_button)
 
     assert empty_password.get_error_message() == error_password
+
+
+def test_already_registered_email(driver):
+    error_alreem = 'Email address is already in use'
+
+    alreem = AddUserPage(driver, Env.addUser_url)
+    alreem.enter_data('Simon',
+                      'Wilson',
+                      'simonw@gmail.com',
+                      'Testsimon4')
+    alreem.click_button(RegistrationPageLocators.submit_button)
+
+    assert alreem.get_error_message() == error_alreem
