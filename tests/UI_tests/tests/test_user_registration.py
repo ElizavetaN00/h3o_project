@@ -148,3 +148,21 @@ def test_with_min_length_fields(driver):
     min_len.click_button(RegistrationPageLocators.submit_button)
 
     assert min_len.is_url_correct(Env.contact_list_url)
+
+
+def test_with_max_length_fields(driver):
+    max_len = AddUserPage(driver, Env.addUser_url)
+    fn, ln, em, pw = (AddUserCreds.first_name * 5,
+                       AddUserCreds.last_name * 5,
+                       AddUserCreds.email * 50,
+                       AddUserCreds.password * 50)
+    max_len.enter_data(fn, ln, em, pw)
+    max_len.click_button(RegistrationPageLocators.submit_button)
+
+    error_max_len = (f"User validation failed: "
+                     f"firstName: Path `firstName` (`{fn}`) is longer than the maximum allowed length (20)., "
+                     f"lastName: Path `lastName` (`{ln}`) is longer than the maximum allowed length (20)., "
+                     f"email: Email is invalid, "
+                     f"password: Path `password` (`{pw}`) is longer than the maximum allowed length (100).")
+
+    assert max_len.get_error_message() == error_max_len
