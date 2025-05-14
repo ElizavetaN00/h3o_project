@@ -160,9 +160,16 @@ def test_with_max_length_fields(driver):
     max_len.click_button(RegistrationPageLocators.submit_button)
 
     error_max_len = (f"User validation failed: "
-                     f"firstName: Path `firstName` (`{fn}`) is longer than the maximum allowed length (20)., "
-                     f"lastName: Path `lastName` (`{ln}`) is longer than the maximum allowed length (20)., "
-                     f"email: Email is invalid, "
-                     f"password: Path `password` (`{pw}`) is longer than the maximum allowed length (100).")
+    f"firstName: Path `firstName` (`{fn}`) is longer than the maximum allowed length (20)., "
+    f"lastName: Path `lastName` (`{ln}`) is longer than the maximum allowed length (20)., "
+    f"email: Email is invalid, "
+    f"password: Path `password` (`{pw}`) is longer than the maximum allowed length (100).")
 
     assert max_len.get_error_message() == error_max_len
+
+
+def test_cancel_registration(driver):
+    cancel_reg = AddUserPage(driver, Env.addUser_url)
+    cancel_reg.click_button(RegistrationPageLocators.cancel_button)
+
+    assert cancel_reg.is_url_correct(Env.url)
