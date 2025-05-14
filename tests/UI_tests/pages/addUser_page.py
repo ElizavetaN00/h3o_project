@@ -19,3 +19,9 @@ class AddUserPage(BasePage):
         self.send_text(self.last_name_input, last_name)
         self.send_text(self.email_input, email)
         self.send_text(self.password_input, password)
+
+    def get_error_message(self):
+        error_message = self.waiting_for_all_elements(RegistrationPageLocators.error_message)
+        if len(error_message) > 0:
+            return error_message[0].text
+        return None
