@@ -34,3 +34,17 @@ def test_empty_first_name(driver):
     empty_fn.click_button(RegistrationPageLocators.submit_button)
 
     assert empty_fn.get_error_message() == error_first_name
+
+
+def test_empty_last_name(driver):
+    error_last_name = 'User validation failed: lastName: Path `lastName` is required.'
+
+    empty_fn = AddUserPage(driver, Env.addUser_url)
+    empty_fn.enter_data(AddUserCreds.first_name,
+                        '',
+                        AddUserCreds.email,
+                        AddUserCreds.password
+                        )
+    empty_fn.click_button(RegistrationPageLocators.submit_button)
+
+    assert empty_fn.get_error_message() == error_last_name
