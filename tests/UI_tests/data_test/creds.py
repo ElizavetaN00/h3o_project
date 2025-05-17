@@ -4,7 +4,7 @@ import string
 
 
 @dataclasses.dataclass
-class AddUserCreds:
+class RegistrationUserCreds:
 
     @staticmethod
     def gen_str():

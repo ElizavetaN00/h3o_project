@@ -1,4 +1,4 @@
-from tests.UI_tests.data_test.creds import AddUserCreds
+from tests.UI_tests.data_test.creds import RegistrationUserCreds
 from tests.UI_tests.data_test.env import Env
 from tests.UI_tests.data_test.locators import RegistrationPageLocators, ContactListPageLocators
 from tests.UI_tests.pages.addUser_page import AddUserPage
@@ -9,10 +9,10 @@ def test_valid_credentials(driver):
                             "City, State/Province, Postal Code", "Country"]
 
     valcreds = AddUserPage(driver, Env.addUser_url)
-    valcreds.enter_data(AddUserCreds.first_name,
-                        AddUserCreds.last_name,
-                        AddUserCreds.email,
-                        AddUserCreds.password)
+    valcreds.enter_data(RegistrationUserCreds.first_name,
+                        RegistrationUserCreds.last_name,
+                        RegistrationUserCreds.email,
+                        RegistrationUserCreds.password)
     valcreds.click_button(RegistrationPageLocators.submit_button)
 
     headers_elements = valcreds.waiting_for_all_elements(ContactListPageLocators.headers)
@@ -27,9 +27,9 @@ def test_empty_first_name(driver):
 
     empty_fn = AddUserPage(driver, Env.addUser_url)
     empty_fn.enter_data('',
-                        AddUserCreds.last_name,
-                        AddUserCreds.email,
-                        AddUserCreds.password
+                        RegistrationUserCreds.last_name,
+                        RegistrationUserCreds.email,
+                        RegistrationUserCreds.password
                         )
     empty_fn.click_button(RegistrationPageLocators.submit_button)
 
@@ -40,10 +40,10 @@ def test_empty_last_name(driver):
     error_last_name = 'User validation failed: lastName: Path `lastName` is required.'
 
     empty_ln = AddUserPage(driver, Env.addUser_url)
-    empty_ln.enter_data(AddUserCreds.first_name,
+    empty_ln.enter_data(RegistrationUserCreds.first_name,
                         '',
-                        AddUserCreds.email,
-                        AddUserCreds.password
+                        RegistrationUserCreds.email,
+                        RegistrationUserCreds.password
                         )
     empty_ln.click_button(RegistrationPageLocators.submit_button)
 
@@ -54,10 +54,10 @@ def test_empty_email(driver):
     error_email = 'User validation failed: email: Email is invalid'
 
     empty_email = AddUserPage(driver, Env.addUser_url)
-    empty_email.enter_data(AddUserCreds.first_name,
-                           AddUserCreds.last_name,
+    empty_email.enter_data(RegistrationUserCreds.first_name,
+                           RegistrationUserCreds.last_name,
                         '',
-                           AddUserCreds.password
+                           RegistrationUserCreds.password
                            )
     empty_email.click_button(RegistrationPageLocators.submit_button)
 
@@ -68,9 +68,9 @@ def test_empty_password(driver):
     error_password = 'User validation failed: password: Path `password` is required.'
 
     empty_password = AddUserPage(driver, Env.addUser_url)
-    empty_password.enter_data(AddUserCreds.first_name,
-                              AddUserCreds.last_name,
-                              AddUserCreds.email,
+    empty_password.enter_data(RegistrationUserCreds.first_name,
+                              RegistrationUserCreds.last_name,
+                              RegistrationUserCreds.email,
                               ''
                               )
     empty_password.click_button(RegistrationPageLocators.submit_button)
@@ -95,10 +95,10 @@ def test_invalid_email_1(driver):
     error_invalid_email = 'User validation failed: email: Email is invalid'
 
     invalid_email = AddUserPage(driver, Env.addUser_url)
-    invalid_email.enter_data(AddUserCreds.first_name,
-                             AddUserCreds.last_name,
-                             AddUserCreds.email[:9] + AddUserCreds.email[10:],
-                             AddUserCreds.password)
+    invalid_email.enter_data(RegistrationUserCreds.first_name,
+                             RegistrationUserCreds.last_name,
+                             RegistrationUserCreds.email[:9] + RegistrationUserCreds.email[10:],
+                             RegistrationUserCreds.password)
     invalid_email.click_button(RegistrationPageLocators.submit_button)
 
     assert invalid_email.get_error_message() == error_invalid_email
@@ -108,10 +108,10 @@ def test_invalid_email_2(driver):
     error_invalid_email = 'User validation failed: email: Email is invalid'
 
     invalid_email = AddUserPage(driver, Env.addUser_url)
-    invalid_email.enter_data(AddUserCreds.first_name,
-                             AddUserCreds.last_name,
-                             AddUserCreds.email[:10],
-                             AddUserCreds.password)
+    invalid_email.enter_data(RegistrationUserCreds.first_name,
+                             RegistrationUserCreds.last_name,
+                             RegistrationUserCreds.email[:10],
+                             RegistrationUserCreds.password)
     invalid_email.click_button(RegistrationPageLocators.submit_button)
 
     assert invalid_email.get_error_message() == error_invalid_email
@@ -119,10 +119,10 @@ def test_invalid_email_2(driver):
 
 def test_with_spaces_in_email(driver):
     spaces_email = AddUserPage(driver, Env.addUser_url)
-    spaces_email.enter_data(AddUserCreds.first_name,
-                             AddUserCreds.last_name,
-                             AddUserCreds.email + '   ',
-                             AddUserCreds.password)
+    spaces_email.enter_data(RegistrationUserCreds.first_name,
+                            RegistrationUserCreds.last_name,
+                            RegistrationUserCreds.email + '   ',
+                            RegistrationUserCreds.password)
     spaces_email.click_button(RegistrationPageLocators.submit_button)
 
     assert spaces_email.is_url_correct(Env.contact_list_url)
@@ -130,10 +130,10 @@ def test_with_spaces_in_email(driver):
 
 def test_with_uppercase_in_email(driver):
     uppercase_email = AddUserPage(driver, Env.addUser_url)
-    uppercase_email.enter_data(AddUserCreds.first_name,
-                               AddUserCreds.last_name,
-                               AddUserCreds.email.upper(),
-                               AddUserCreds.password)
+    uppercase_email.enter_data(RegistrationUserCreds.first_name,
+                               RegistrationUserCreds.last_name,
+                               RegistrationUserCreds.email.upper(),
+                               RegistrationUserCreds.password)
     uppercase_email.click_button(RegistrationPageLocators.submit_button)
 
     assert uppercase_email.is_url_correct(Env.contact_list_url)
@@ -141,10 +141,10 @@ def test_with_uppercase_in_email(driver):
 
 def test_with_min_length_fields(driver):
     min_len = AddUserPage(driver, Env.addUser_url)
-    min_len.enter_data(AddUserCreds.first_name[0],
-                       AddUserCreds.last_name[0],
-                       AddUserCreds.email,
-                       AddUserCreds.password[:7])
+    min_len.enter_data(RegistrationUserCreds.first_name[0],
+                       RegistrationUserCreds.last_name[0],
+                       RegistrationUserCreds.email,
+                       RegistrationUserCreds.password[:7])
     min_len.click_button(RegistrationPageLocators.submit_button)
 
     assert min_len.is_url_correct(Env.contact_list_url)
@@ -152,10 +152,10 @@ def test_with_min_length_fields(driver):
 
 def test_with_max_length_fields(driver):
     max_len = AddUserPage(driver, Env.addUser_url)
-    fn, ln, em, pw = (AddUserCreds.first_name * 5,
-                       AddUserCreds.last_name * 5,
-                       AddUserCreds.email * 50,
-                       AddUserCreds.password * 50)
+    fn, ln, em, pw = (RegistrationUserCreds.first_name * 5,
+                      RegistrationUserCreds.last_name * 5,
+                      RegistrationUserCreds.email * 50,
+                      RegistrationUserCreds.password * 50)
     max_len.enter_data(fn, ln, em, pw)
     max_len.click_button(RegistrationPageLocators.submit_button)
 
