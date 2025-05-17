@@ -12,9 +12,10 @@ class Env:
     Класс для хранения конфигурационных данных тестового окружения.
     Атрибуты класса:
         url: Базовый URL тестового приложения
-        documenter: Ссылка на документацию API в Postman
-        contact_list: Эндпоинт для работы со списком контактов
+        documenter_url: Ссылка на документацию API в Postman
+        contact_list_url: Эндпоинт для работы со списком контактов
     """
     url = "https://thinking-tester-contact-list.herokuapp.com/"
-    documenter = "https://documenter.getpostman.com/view/4012288/TzK2bEa8"
-    contact_list = "https://thinking-tester-contact-list.herokuapp.com/contactList"
+    documenter_url = "https://documenter.getpostman.com/view/4012288/TzK2bEa8"
+    contact_list_url = "https://thinking-tester-contact-list.herokuapp.com/contactList"
+    addUser_url = "https://thinking-tester-contact-list.herokuapp.com/addUser"

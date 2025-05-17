@@ -17,4 +17,4 @@ def test_here_link(driver):
     hl.open()
     hl.click_button(StartPageLocators.here_link)
 
-    assert hl.is_url_correct(Env.documenter)
+    assert hl.is_url_correct(Env.documenter_url)
