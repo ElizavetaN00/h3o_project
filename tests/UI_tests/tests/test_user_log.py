@@ -91,3 +91,14 @@ def test_uppercase_email(driver):
                      SimonUserCreds.password)
 
     assert spaces_em.is_url_correct(Env.addUser_url)
+
+
+def test_log_out(driver):
+
+    log_out = BasePage(driver, Env.url)
+    log_out.log_in(SimonUserCreds.email,
+                   SimonUserCreds.password)
+
+    log_out.click_button(ContactListPageLocators.logout_button)
+
+    assert log_out.is_url_correct(Env.url)

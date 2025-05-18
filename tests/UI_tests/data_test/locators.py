@@ -18,6 +18,7 @@ class RegistrationPageLocators(StartPageLocators):
     first_name = By.XPATH, "//input[@id='firstName']"
     last_name = By.XPATH, "//input[@id='lastName']"
     cancel_button = By.XPATH, "//button[@id='cancel']"
+    log_out_button = By.XPATH, "//button[@id='logout']"
 
 
 @dataclasses.dataclass
