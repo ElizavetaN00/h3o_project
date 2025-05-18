@@ -8,3 +8,4 @@ def test_all_fields(driver):
     afs = AddContact(driver, Env.url)
     afs.enter_data(*AliceContactCreds.return_contact_info)
 
+    assert afs.convert_to_line(*AliceContactCreds.return_contact_info) in afs.return_contact_list()

@@ -26,7 +26,8 @@ class ContactListPageLocators:
     headers = By.XPATH, '//table[@class="contactTable"]//thead//th'
     add_contact_button = By.XPATH, "//button[@id='add-contact']"
     logout_button = By.XPATH, "//button[@id='logout']"
-    # table?
+    line_contact = By.XPATH, '//tr[@class="contactTableBodyRow"]'
+    every_cell = By.XPATH, '//td[not(contains(@hidden, "true"))]'
 
 
 @dataclasses.dataclass
@@ -47,19 +48,19 @@ class AddContactPageLocators:
     error_message = By.ID, "error"
 
 
-@dataclasses.dataclass
-class ContactDetailsPageLocators:
-    first_name = By.XPATH, "//span[@id='firstName']"
-    last_name = By.XPATH, "//span[@id='lastName']"
-    birthdate = By.XPATH, "//span[@id='birthdate']"
-    email = By.XPATH, "//span[@id='email']"
-    phone = By.XPATH, "//span[@id='phone']"
-    street1 = By.XPATH, "//span[@id='street1']"
-    street2 = By.XPATH, "//span[@id='street2']"
-    city = By.XPATH, "//span[@id='city']"
-    state_province = By.XPATH, "//span[@id='stateProvince']"
-    postal_code = By.XPATH, "//span[@id='postalCode']"
-    country = By.XPATH, "//span[@id='country']"
-    edit_button = By.XPATH, "//button[@id='edit-contact']"
-    delete_button = By.XPATH, "//button[@id='delete']"
-    return_button = By.XPATH, "//button[@id='return']"
+# @dataclasses.dataclass
+# class ContactDetailsPageLocators:
+#     first_name = By.XPATH, "//span[@id='firstName']"
+#     last_name = By.XPATH, "//span[@id='lastName']"
+#     birthdate = By.XPATH, "//span[@id='birthdate']"
+#     email = By.XPATH, "//span[@id='email']"
+#     phone = By.XPATH, "//span[@id='phone']"
+#     street1 = By.XPATH, "//span[@id='street1']"
+#     street2 = By.XPATH, "//span[@id='street2']"
+#     city = By.XPATH, "//span[@id='city']"
+#     state_province = By.XPATH, "//span[@id='stateProvince']"
+#     postal_code = By.XPATH, "//span[@id='postalCode']"
+#     country = By.XPATH, "//span[@id='country']"
+#     edit_button = By.XPATH, "//button[@id='edit-contact']"
+#     delete_button = By.XPATH, "//button[@id='delete']"
+#     return_button = By.XPATH, "//button[@id='return']"

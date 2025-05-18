@@ -42,4 +42,4 @@ class AliceContactCreds:
         "country": "USA"
     }
 
-    return_contact_info = tuple(contact_info.values())
+    return_contact_info = list(contact_info.values())

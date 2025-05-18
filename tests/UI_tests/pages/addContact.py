@@ -23,7 +23,7 @@ class AddContact(BasePage):
                    city = None,
                    state_province = None,
                    postal_code = None,
-                   country = None,):
+                   country = None):
 
         self.send_text(AddContactPageLocators.first_name, first_name)
         self.send_text(AddContactPageLocators.last_name, last_name)
@@ -38,3 +38,32 @@ class AddContact(BasePage):
         self.send_text(AddContactPageLocators.country, country)
 
         self.click_button(AddContactPageLocators.submit_button)
+
+
+    def return_contact_list(self):
+        contact_list = []
+        every_cell_info_elements = self.waiting_for_all_elements(ContactListPageLocators.every_cell)
+        every_cell_info = [eci.text for eci in every_cell_info_elements]
+
+        for i in range(0, len(every_cell_info), 7):
+            contact_list.append(every_cell_info[i : i + 7])
+
+        return contact_list
+
+
+    @staticmethod
+    def convert_to_line(first_name=None,
+                        last_name=None,
+                        birthdate=None,
+                        email=None,
+                        phone=None,
+                        street1=None,
+                        street2=None,
+                        city=None,
+                        state_province=None,
+                        postal_code=None,
+                        country=None):
+
+        return [' '.join((first_name, last_name)), birthdate, email, phone,
+                ' '.join((street1, street2)), ' '.join((city, state_province, postal_code)),
+                country]
