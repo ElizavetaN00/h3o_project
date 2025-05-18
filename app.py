@@ -4,11 +4,11 @@ from flask_restful import Resource, Api
 app = Flask(__name__)
 api = Api(app)
 
-class Hello (Resource):
+class Team(Resource):  # Новый класс для корня
     def get(self):
-        return 'H3O'
+        return 'H3O Project'
 
-api.add_resource(Hello, '/')
+api.add_resource(Team, "/")
 
 if __name__ == '__main__':
-    app.run('0.0.0.0','5001')
+    app.run('0.0.0.0','5002')
