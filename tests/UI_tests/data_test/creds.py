@@ -16,3 +16,11 @@ class RegistrationUserCreds:
     last_name = gen_str()
     email = gen_str() + '@gmail.com'
     password = gen_str()
+
+
+@dataclasses.dataclass
+class SimonUserCreds:
+    first_name = 'Simon'
+    last_name = 'Wilson'
+    email = 'simonw@gmail.com'
+    password = 'Testsimon4'

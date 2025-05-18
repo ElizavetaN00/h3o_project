@@ -1,11 +1,14 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
+from tests.UI_tests.data_test.locators import StartPageLocators
+
 
 class BasePage:
     def __init__(self, driver, url):
         self.driver = driver
         self.url = url
+        self.open()
 
     def open(self):
         self.driver.get(self.url)
@@ -33,3 +36,7 @@ class BasePage:
     def waiting_for_all_elements(self, locator):
         wait = WebDriverWait(self.driver, 10)
         return wait.until(ec.presence_of_all_elements_located(locator))
+
+    def log_in(self, email, password):
+        self.send_text(StartPageLocators.email, email)
+        self.send_text(StartPageLocators.password, password)

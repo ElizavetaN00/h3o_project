@@ -1,4 +1,4 @@
-from tests.UI_tests.data_test.creds import RegistrationUserCreds
+from tests.UI_tests.data_test.creds import RegistrationUserCreds, SimonUserCreds
 from tests.UI_tests.data_test.env import Env
 from tests.UI_tests.data_test.locators import RegistrationPageLocators, ContactListPageLocators
 from tests.UI_tests.pages.addUser_page import AddUserPage
@@ -82,10 +82,10 @@ def test_already_registered_email(driver):
     error_alreem = 'Email address is already in use'
 
     alreem = AddUserPage(driver, Env.addUser_url)
-    alreem.enter_data('Simon',
-                      'Wilson',
-                      'simonw@gmail.com',
-                      'Testsimon4')
+    alreem.enter_data(SimonUserCreds.first_name,
+                      SimonUserCreds.last_name,
+                      SimonUserCreds.email,
+                      SimonUserCreds.password)
     alreem.click_button(RegistrationPageLocators.submit_button)
 
     assert alreem.get_error_message() == error_alreem
