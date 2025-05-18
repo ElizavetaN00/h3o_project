@@ -82,3 +82,12 @@ def test_spaces_in_email(driver):
                      SimonUserCreds.password)
 
     assert spaces_em.is_url_correct(Env.addUser_url)
+
+
+def test_uppercase_email(driver):
+
+    spaces_em = BasePage(driver, Env.url)
+    spaces_em.log_in(SimonUserCreds.email.upper(),
+                     SimonUserCreds.password)
+
+    assert spaces_em.is_url_correct(Env.addUser_url)
