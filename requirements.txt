@@ -3,3 +3,5 @@ selenium
 pylint
 mypy
 requests
+Flask>=2.0.0
+Flask-RESTful
