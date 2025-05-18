@@ -27,3 +27,14 @@ def test_empty_form(driver):
     e_form.click_button(StartPageLocators.submit_button)
 
     assert e_form.get_error_message(StartPageLocators.error_message) == error_msg
+
+
+def test_empty_email(driver):
+    error_msg = 'Incorrect username or password'
+
+    e_email = BasePage(driver, Env.url)
+    e_email.log_in('', SimonUserCreds.password)
+    e_email.click_button(StartPageLocators.submit_button)
+
+    assert e_email.get_error_message(StartPageLocators.error_message) == error_msg
+
