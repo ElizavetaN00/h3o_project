@@ -38,3 +38,12 @@ def test_empty_email(driver):
 
     assert e_email.get_error_message(StartPageLocators.error_message) == error_msg
 
+
+def test_empty_password(driver):
+    error_msg = 'Incorrect username or password'
+
+    e_password = BasePage(driver, Env.url)
+    e_password.log_in(StartPageLocators.email, '')
+    e_password.click_button(StartPageLocators.submit_button)
+
+    assert e_password.get_error_message(StartPageLocators.error_message) == error_msg
