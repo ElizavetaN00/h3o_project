@@ -40,6 +40,7 @@ class BasePage:
     def log_in(self, email, password):
         self.send_text(StartPageLocators.email, email)
         self.send_text(StartPageLocators.password, password)
+        self.click_button(StartPageLocators.submit_button)
 
     def get_error_message(self, locator):
         error_message = self.waiting_for_all_elements(locator)
