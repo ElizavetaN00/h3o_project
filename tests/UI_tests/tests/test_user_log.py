@@ -18,3 +18,12 @@ def test_valid_credentials(driver):
 
     assert valcreds.is_url_correct(Env.contact_list_url)
     assert headers == headers_contact_list
+
+
+def test_empty_form(driver):
+    error_msg = "Incorrect username or password"
+
+    e_form = BasePage(driver, Env.url)
+    e_form.click_button(StartPageLocators.submit_button)
+
+    assert e_form.get_error_message(StartPageLocators.error_message) == error_msg

@@ -33,7 +33,7 @@ def test_empty_first_name(driver):
                         )
     empty_fn.click_button(RegistrationPageLocators.submit_button)
 
-    assert empty_fn.get_error_message() == error_first_name
+    assert empty_fn.get_error_message(RegistrationPageLocators.error_message) == error_first_name
 
 
 def test_empty_last_name(driver):
@@ -47,7 +47,7 @@ def test_empty_last_name(driver):
                         )
     empty_ln.click_button(RegistrationPageLocators.submit_button)
 
-    assert empty_ln.get_error_message() == error_last_name
+    assert empty_ln.get_error_message(RegistrationPageLocators.error_message) == error_last_name
 
 
 def test_empty_email(driver):
@@ -61,7 +61,7 @@ def test_empty_email(driver):
                            )
     empty_email.click_button(RegistrationPageLocators.submit_button)
 
-    assert empty_email.get_error_message() == error_email
+    assert empty_email.get_error_message(RegistrationPageLocators.error_message) == error_email
 
 
 def test_empty_password(driver):
@@ -75,7 +75,7 @@ def test_empty_password(driver):
                               )
     empty_password.click_button(RegistrationPageLocators.submit_button)
 
-    assert empty_password.get_error_message() == error_password
+    assert empty_password.get_error_message(RegistrationPageLocators.error_message) == error_password
 
 
 def test_already_registered_email(driver):
@@ -88,7 +88,7 @@ def test_already_registered_email(driver):
                       SimonUserCreds.password)
     alreem.click_button(RegistrationPageLocators.submit_button)
 
-    assert alreem.get_error_message() == error_alreem
+    assert alreem.get_error_message(RegistrationPageLocators.error_message) == error_alreem
 
 
 def test_invalid_email_1(driver):
@@ -101,7 +101,7 @@ def test_invalid_email_1(driver):
                              RegistrationUserCreds.password)
     invalid_email.click_button(RegistrationPageLocators.submit_button)
 
-    assert invalid_email.get_error_message() == error_invalid_email
+    assert invalid_email.get_error_message(RegistrationPageLocators.error_message) == error_invalid_email
 
 
 def test_invalid_email_2(driver):
@@ -114,7 +114,7 @@ def test_invalid_email_2(driver):
                              RegistrationUserCreds.password)
     invalid_email.click_button(RegistrationPageLocators.submit_button)
 
-    assert invalid_email.get_error_message() == error_invalid_email
+    assert invalid_email.get_error_message(RegistrationPageLocators.error_message) == error_invalid_email
 
 
 def test_with_spaces_in_email(driver):
@@ -165,7 +165,7 @@ def test_with_max_length_fields(driver):
     f"email: Email is invalid, "
     f"password: Path `password` (`{pw}`) is longer than the maximum allowed length (100).")
 
-    assert max_len.get_error_message() == error_max_len
+    assert max_len.get_error_message(RegistrationPageLocators.error_message) == error_max_len
 
 
 def test_cancel_registration(driver):
