@@ -73,3 +73,12 @@ def test_no_dog_email(driver):
 
     assert (no_dog.get_error_message
             (StartPageLocators.error_message) == ErrorMsg.log_in_error)
+
+
+def test_spaces_in_email(driver):
+
+    spaces_em = BasePage(driver, Env.url)
+    spaces_em.log_in(SimonUserCreds.email + ' ' * 3,
+                     SimonUserCreds.password)
+
+    assert spaces_em.is_url_correct(Env.addUser_url)
