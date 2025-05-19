@@ -1,3 +1,5 @@
+import re
+
 from tests.UI_tests.data_test.creds import SimonUserCreds
 from tests.UI_tests.data_test.locators import ContactListPageLocators, AddContactPageLocators
 from tests.UI_tests.pages.base_page import BasePage
@@ -12,30 +14,21 @@ class AddContact(BasePage):
         self.click_button(ContactListPageLocators.add_contact_button)
 
 
-    def enter_data(self,
-                   first_name = None,
-                   last_name = None,
-                   birthdate = None,
-                   email = None,
-                   phone = None,
-                   street1 = None,
-                   street2 = None,
-                   city = None,
-                   state_province = None,
-                   postal_code = None,
-                   country = None):
+    def enter_data(self, first_name = None, last_name = None, birthdate = None,
+                   email = None, phone = None, street1 = None, street2 = None,
+                   city = None, state_province = None, postal_code = None, country = None):
 
-        self.send_text(AddContactPageLocators.first_name, first_name)
-        self.send_text(AddContactPageLocators.last_name, last_name)
-        self.send_text(AddContactPageLocators.birthdate, birthdate)
-        self.send_text(AddContactPageLocators.email, email)
-        self.send_text(AddContactPageLocators.phone, phone)
-        self.send_text(AddContactPageLocators.street1, street1)
-        self.send_text(AddContactPageLocators.street2, street2)
-        self.send_text(AddContactPageLocators.city, city)
-        self.send_text(AddContactPageLocators.state_province, state_province)
-        self.send_text(AddContactPageLocators.postal_code, postal_code)
-        self.send_text(AddContactPageLocators.country, country)
+        self.send_text(AddContactPageLocators.first_name, first_name) if first_name is not None else None
+        self.send_text(AddContactPageLocators.last_name, last_name) if last_name is not None else None
+        self.send_text(AddContactPageLocators.birthdate, birthdate) if birthdate is not None else None
+        self.send_text(AddContactPageLocators.email, email) if email is not None else None
+        self.send_text(AddContactPageLocators.phone, phone) if phone is not None else None
+        self.send_text(AddContactPageLocators.street1, street1) if street1 is not None else None
+        self.send_text(AddContactPageLocators.street2, street2) if street2 is not None else None
+        self.send_text(AddContactPageLocators.city, city) if city is not None else None
+        self.send_text(AddContactPageLocators.state_province, state_province) if state_province is not None else None
+        self.send_text(AddContactPageLocators.postal_code, postal_code) if postal_code is not None else None
+        self.send_text(AddContactPageLocators.country, country) if country is not None else None
 
         self.click_button(AddContactPageLocators.submit_button)
 
@@ -52,18 +45,18 @@ class AddContact(BasePage):
 
 
     @staticmethod
-    def convert_to_line(first_name=None,
-                        last_name=None,
-                        birthdate=None,
-                        email=None,
-                        phone=None,
-                        street1=None,
-                        street2=None,
-                        city=None,
-                        state_province=None,
-                        postal_code=None,
-                        country=None):
+    def convert_to_line(first_name = '', last_name = '', birthdate = '', email = '',
+                        phone = '', street1 = '', street2 = '', city = '',
+                        state_province = '', postal_code = '', country = ''):
 
-        return [' '.join((first_name, last_name)), birthdate, email, phone,
+        data = [' '.join((first_name, last_name)), birthdate, email, phone,
                 ' '.join((street1, street2)), ' '.join((city, state_province, postal_code)),
                 country]
+
+        for i, v in enumerate(data):
+            if re.fullmatch(r'\s+', v):
+                data[i] = ''
+            else:
+                data[i] = data[i].strip()
+
+        return data
