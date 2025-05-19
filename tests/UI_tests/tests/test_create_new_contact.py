@@ -76,3 +76,13 @@ def test_invalid_birthdate(driver):
 
     assert (invbir.get_error_message
             (AddContactPageLocators.error_message) == ErrorMsg.contact_birthdate_error)
+
+
+def test_invalid_email(driver):
+    invema = AddContact(driver, Env.url)
+    invema.enter_data(first_name=AliceContactCreds.contact_info['first_name'],
+                      last_name=AliceContactCreds.contact_info['last_name'],
+                      email=AliceContactCreds.contact_info['email'][:5] + AliceContactCreds.contact_info['email'][6:])
+
+    assert (invema.get_error_message
+            (AddContactPageLocators.error_message) == ErrorMsg.contact_email_error)
