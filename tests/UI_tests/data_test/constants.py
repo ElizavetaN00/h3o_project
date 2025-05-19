@@ -10,6 +10,10 @@ class ErrorMsg:
     password_error = 'User validation failed: password: Path `password` is required.'
     alreem_error = 'Email address is already in use'
 
+    contact_first_name_error = "Contact validation failed: firstName: Path `firstName` is required."
+    contact_last_name_error = "Contact validation failed: lastName: Path `lastName` is required."
+
+
     @staticmethod
     def max_len_error(fn, ln, pw):
         return f"User validation failed: "\
