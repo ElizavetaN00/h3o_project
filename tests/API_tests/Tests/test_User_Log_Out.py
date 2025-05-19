@@ -1,11 +1,12 @@
 import pytest
 import requests
 from tests.API_tests.Test_Data.auth import load_token
+from tests.API_tests.conftest import read_config
 
 
 @pytest.mark.logout
-def test_user_logout():
-    url = "https://thinking-tester-contact-list.herokuapp.com/users/logout"
+def test_user_logout(read_config):
+    url = f"{read_config['URL']}/users/logout"
 
     token = load_token()
 

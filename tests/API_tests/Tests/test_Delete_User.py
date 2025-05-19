@@ -1,11 +1,12 @@
 import pytest
 import requests
 from tests.API_tests.Test_Data.auth import load_token
+from tests.API_tests.conftest import read_config
 
 
 @pytest.mark.delete_user
-def test_delete_user():
-    url_delete = "https://thinking-tester-contact-list.herokuapp.com/users/me"
+def test_delete_user(read_config):
+    url_delete = f"{read_config['URL']}/users/me"
 
     token = load_token()
 
