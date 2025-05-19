@@ -32,3 +32,12 @@ def test_only_first_name(driver):
 
     assert (ofn.get_error_message
             (AddContactPageLocators.error_message) == ErrorMsg.contact_last_name_error)
+
+
+def test_only_last_name(driver):
+
+    oln = AddContact(driver, Env.url)
+    oln.enter_data(last_name=AliceContactCreds.contact_info['last_name'])
+
+    assert (oln.get_error_message
+            (AddContactPageLocators.error_message) == ErrorMsg.contact_first_name_error)
