@@ -41,3 +41,27 @@ def test_only_last_name(driver):
 
     assert (oln.get_error_message
             (AddContactPageLocators.error_message) == ErrorMsg.contact_first_name_error)
+
+
+def test_max_length_fields(driver):
+    mlf = AddContact(driver, Env.url)
+    (fn, ln, email, street1, street2, city,
+     state_province, postal_code, country) = (AliceContactCreds.contact_info['first_name'] * 15,
+                                              AliceContactCreds.contact_info['last_name'] * 15,
+                                              AliceContactCreds.contact_info['email'] * 15,
+                                              AliceContactCreds.contact_info['street1'] * 15,
+                                              AliceContactCreds.contact_info['street2'] * 15,
+                                              AliceContactCreds.contact_info['city'] * 15,
+                                              AliceContactCreds.contact_info['state_province'] * 15,
+                                              AliceContactCreds.contact_info['postal_code'] * 15,
+                                              AliceContactCreds.contact_info['country'] * 15)
+
+
+    mlf.enter_data(first_name=fn, last_name=ln, email=email, street1=street1,
+                   street2=street2, city=city, state_province=state_province,
+                   postal_code=postal_code, country=country)
+
+    assert (mlf.get_error_message
+            (AddContactPageLocators.error_message) == ErrorMsg.contact_max_len_error(fn, ln, street1, street2,
+                                                                                     city, state_province,
+                                                                                     postal_code, country))
