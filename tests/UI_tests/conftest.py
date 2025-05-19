@@ -1,9 +1,12 @@
 import pytest
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 
 @pytest.fixture(name='driver')
 def fixture_driver():
-    browser = webdriver.Firefox()
+    options = Options()
+    options.add_argument('--headless')
+    browser = webdriver.Firefox(options=options)
     yield browser
     browser.quit()
