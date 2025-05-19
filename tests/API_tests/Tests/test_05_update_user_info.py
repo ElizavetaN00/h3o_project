@@ -16,7 +16,7 @@ def test_update_user_info(read_config):
 
     token = load_token()
     if not token:
-        pytest.skip("❌ Токен не найден")
+        pytest.skip("Токен не найден")
 
     with open(user_template_path, 'r', encoding='utf-8') as f:
         user_data = json.load(f)
