@@ -65,3 +65,14 @@ def test_max_length_fields(driver):
             (AddContactPageLocators.error_message) == ErrorMsg.contact_max_len_error(fn, ln, street1, street2,
                                                                                      city, state_province,
                                                                                      postal_code, country))
+
+
+def test_invalid_birthdate(driver):
+
+    invbir = AddContact(driver, Env.url)
+    invbir.enter_data(first_name=AliceContactCreds.contact_info['first_name'],
+                      last_name=AliceContactCreds.contact_info['last_name'],
+                      birthdate='4045-99-98')
+
+    assert (invbir.get_error_message
+            (AddContactPageLocators.error_message) == ErrorMsg.contact_birthdate_error)

@@ -20,6 +20,7 @@ class ErrorMsg:
 
     contact_first_name_error = "Contact validation failed: firstName: Path `firstName` is required."
     contact_last_name_error = "Contact validation failed: lastName: Path `lastName` is required."
+    contact_birthdate_error = "Contact validation failed: birthdate: Birthdate is invalid"
 
     @staticmethod
     def contact_max_len_error(fn, ln, street1, street2, city, state_province, postal_code, country):
