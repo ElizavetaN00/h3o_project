@@ -86,3 +86,14 @@ def test_invalid_email(driver):
 
     assert (invema.get_error_message
             (AddContactPageLocators.error_message) == ErrorMsg.contact_email_error)
+
+
+def test_special_symbol_in_email(driver):
+    specsym = AddContact(driver, Env.url)
+    specsym.enter_data(first_name='Alíce', last_name="O'Green", email='alíce.s+mít@test.com',
+                       phone='+1(650)7599755', street1='1101# Summit St', street2='244$ Aspen Hills Ct',
+                       city='<Evanston>', state_province='&WY', country='{USA}')
+
+    assert specsym.convert_to_line(first_name='Alíce', last_name="O'Green", email='alíce.s+mít@test.com',
+                       phone='+1(650)7599755', street1='1101# Summit St', street2='244$ Aspen Hills Ct',
+                       city='<Evanston>', state_province='&WY', country='{USA}') in specsym.return_contact_list()
