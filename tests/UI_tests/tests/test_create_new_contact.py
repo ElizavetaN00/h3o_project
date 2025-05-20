@@ -97,3 +97,14 @@ def test_special_symbol_in_email(driver):
     assert specsym.convert_to_line(first_name='Alíce', last_name="O'Green", email='alíce.s+mít@test.com',
                        phone='+1(650)7599755', street1='1101# Summit St', street2='244$ Aspen Hills Ct',
                        city='<Evanston>', state_province='&WY', country='{USA}') in specsym.return_contact_list()
+
+
+def test_emoji_in_email(driver):
+    emoj = AddContact(driver, Env.url)
+    emoj.enter_data(first_name='Alice😉', last_name="🍇Green",
+                       street1='1101 Summit St😃', street2='244 Aspen Hills Ct😀',
+                       city='🤯Evanston', state_province='🍉WY', country='USA👾')
+
+    assert emoj.convert_to_line(first_name='Alice😉', last_name="🍇Green",
+                       street1='1101 Summit St😃', street2='244 Aspen Hills Ct😀',
+                       city='🤯Evanston', state_province='🍉WY', country='USA👾') in emoj.return_contact_list()
