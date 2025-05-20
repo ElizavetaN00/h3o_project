@@ -19,7 +19,7 @@ class TestStartPage:
         assert osp.get_title() == StringsPage.title
         assert osp.get_visibility(StartPageLocators.title) is True
 
-    @pytest.mark.smoke
+    @pytest.mark.functional
     def test_here_link(self, driver):
         hl = BasePage(driver, Env.url)
         hl.click_button(StartPageLocators.here_link)
