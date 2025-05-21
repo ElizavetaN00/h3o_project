@@ -44,7 +44,7 @@ class AddContact(BasePage):
         self.click_button(AddContactPageLocators.submit_button)
 
 
-    def return_contact_list(self):
+    def table_contact_list(self):
         contact_list = []
         every_cell_info_elements = self.waiting_for_all_elements(ContactListPageLocators.every_cell)
         every_cell_info = [eci.text for eci in every_cell_info_elements]
