@@ -1,4 +1,5 @@
-from tests.UI_tests.data_test.locators import ContactListPageLocators, ContactDetailsPageLocators
+from tests.UI_tests.data_test.locators import ContactListPageLocators, ContactDetailsPageLocators, \
+    EditContactPageLocators
 from tests.UI_tests.pages.add_contact import AddContact
 
 
@@ -41,3 +42,16 @@ class ContactDetails(AddContact):
                 state_province if state_province is not None else '',
                 postal_code if postal_code is not None else '',
                 country if country is not None else '']
+
+    def edit_contact_details_list(self):
+        return [self.return_text_from_input_field(EditContactPageLocators.first_name),
+                self.return_text_from_input_field(EditContactPageLocators.last_name),
+                self.return_text_from_input_field(EditContactPageLocators.birthdate),
+                self.return_text_from_input_field(EditContactPageLocators.email),
+                self.return_text_from_input_field(EditContactPageLocators.phone),
+                self.return_text_from_input_field(EditContactPageLocators.street1),
+                self.return_text_from_input_field(EditContactPageLocators.street2),
+                self.return_text_from_input_field(EditContactPageLocators.city),
+                self.return_text_from_input_field(EditContactPageLocators.state_province),
+                self.return_text_from_input_field(EditContactPageLocators.postal_code),
+                self.return_text_from_input_field(EditContactPageLocators.country)]

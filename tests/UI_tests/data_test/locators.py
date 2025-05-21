@@ -11,6 +11,7 @@ class StartPageLocators:
     submit_button = By.XPATH, "//button[@id='submit']"
     sign_up_button = By.XPATH, "//button[@id='signup']"
     error_message = By.XPATH, "//span[@id='error']"
+    main_page_content = By.XPATH, '//div[@class="main-content"]'
 
 
 @dataclasses.dataclass
@@ -58,3 +59,17 @@ class ContactDetailsPageLocators(AddContactPageLocators):
     edit_button = By.XPATH, "//button[@id='edit-contact']"
     delete_button = By.XPATH, "//button[@id='delete']"
     return_button = By.XPATH, "//button[@id='return']"
+
+@dataclasses.dataclass
+class EditContactPageLocators:
+    first_name = By.XPATH, "//input[@id='firstName']"
+    last_name = By.XPATH, "//input[@id='lastName']"
+    birthdate = By.XPATH, "//input[@id='birthdate']"
+    email = By.XPATH, "//input[@id='email']"
+    phone = By.XPATH, "//input[@id='phone']"
+    street1 = By.XPATH, "//input[@id='street1']"
+    street2 = By.XPATH, "//input[@id='street2']"
+    city = By.XPATH, "//input[@id='city']"
+    state_province = By.XPATH, "//input[@id='stateProvince']"
+    postal_code = By.XPATH, "//input[@id='postalCode']"
+    country = By.XPATH, "//input[@id='country']"
