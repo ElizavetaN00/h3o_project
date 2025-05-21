@@ -19,3 +19,4 @@ class Env:
     documenter_url = "https://documenter.getpostman.com/view/4012288/TzK2bEa8"
     contact_list_url = "https://thinking-tester-contact-list.herokuapp.com/contactList"
     addUser_url = "https://thinking-tester-contact-list.herokuapp.com/addUser"
+    contact_details_url = "https://thinking-tester-contact-list.herokuapp.com/contactDetails"

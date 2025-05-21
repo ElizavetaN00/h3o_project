@@ -20,7 +20,7 @@ class TestCreateNewContact:
         afs.enter_new_contact()
 
         assert afs.is_url_correct(Env.contact_list_url)
-        assert afs.convert_to_line(*data) in afs.return_contact_list()
+        assert afs.convert_to_line(*data) in afs.table_contact_list()
 
 
     @pytest.mark.smoke
@@ -33,7 +33,7 @@ class TestCreateNewContact:
         mf.enter_new_contact()
 
         assert mf.is_url_correct(Env.contact_list_url)
-        assert mf.convert_to_line(*data) in mf.return_contact_list()
+        assert mf.convert_to_line(*data) in mf.table_contact_list()
 
 
     @pytest.mark.critical_path
@@ -113,7 +113,7 @@ class TestCreateNewContact:
                                   state_province=sp, country=cn)
 
         assert specsym.convert_to_line(first_name=fn, last_name=ln, email=e, phone=p, street1=s1, street2=s2,
-                                       city=c, state_province=sp, country=cn) in specsym.return_contact_list()
+                                       city=c, state_province=sp, country=cn) in specsym.table_contact_list()
 
 
     @pytest.mark.regression
@@ -127,4 +127,4 @@ class TestCreateNewContact:
                                 country=cn)
 
         assert emoji.convert_to_line(first_name=fn, last_name=ln, street1=s1, street2=s2,
-                                     city=c, state_province=sp, country=cn) in emoji.return_contact_list()
+                                     city=c, state_province=sp, country=cn) in emoji.table_contact_list()
