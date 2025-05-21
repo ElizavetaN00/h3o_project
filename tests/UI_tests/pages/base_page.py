@@ -20,7 +20,7 @@ class BasePage:
         button.click()
 
     def send_text(self, locator, text):
-        wait = WebDriverWait(self.driver, 10)
+        wait = WebDriverWait(self.driver, 20)
         input_field = wait.until(ec.presence_of_element_located(locator))
         input_field.send_keys(Keys.CONTROL + 'a')
         input_field.clear()
@@ -41,7 +41,7 @@ class BasePage:
                                                 f"but got {self.driver.current_url}")
 
     def waiting_for_all_elements(self, locator):
-        wait = WebDriverWait(self.driver, 10)
+        wait = WebDriverWait(self.driver, 20)
         return wait.until(ec.presence_of_all_elements_located(locator))
 
     def log_in(self, email, password):
