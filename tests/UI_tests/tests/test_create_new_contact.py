@@ -17,7 +17,7 @@ class TestCreateNewContact:
 
         afs = AddContact(driver, Env.url)
         data = ContactCreds.return_alice_contact_info
-        afs.enter_new_contact()
+        afs.enter_new_contact(*data)
 
         assert afs.is_url_correct(Env.contact_list_url)
         assert afs.convert_to_line(*data) in afs.table_contact_list()
@@ -30,7 +30,7 @@ class TestCreateNewContact:
 
         mf = AddContact(driver, Env.url)
         data = ContactCreds.alice_contact_info['first_name'], ContactCreds.alice_contact_info['last_name']
-        mf.enter_new_contact()
+        mf.enter_new_contact(*data)
 
         assert mf.is_url_correct(Env.contact_list_url)
         assert mf.convert_to_line(*data) in mf.table_contact_list()
