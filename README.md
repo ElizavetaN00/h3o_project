@@ -6,7 +6,7 @@ Test framework for automated testing of the [Contact List App](https://thinking-
 
 # Project structure
 ```
-.
+...
 ├── h3o_project/
 │   ├── github/
 │   ├── workflows/
