@@ -32,7 +32,7 @@ def test_update_contact_patch(read_config, auth_token, registered_user, logger):
     assert r_post.status_code == 201, f"Ошибка при создании контакта: {r_post.status_code} {r_post.text}"
     contact_id = r_post.json().get("_id")
 
-    # Шаг 2: обновляем контакт через PATCH
+    # Обновляем контакт через PATCH
     patch_payload = {
         "email": fake.unique.email(),
         "phone": fake.msisdn()[:10]
