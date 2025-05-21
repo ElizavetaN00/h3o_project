@@ -22,4 +22,3 @@ def test_get_contact(read_config, auth_token, created_contact_id, registered_use
 
     logger.info(f"Контакт получен: {response.text}")
     logger.info(f"Статус: {response.status_code}")
-

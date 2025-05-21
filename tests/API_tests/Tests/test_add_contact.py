@@ -14,6 +14,7 @@ def test_add_contact(read_config, auth_token, registered_user, logger):
     }
 
     fake = Faker()
+
     contact_payload = {
         "firstName": fake.first_name(),
         "lastName": fake.last_name(),

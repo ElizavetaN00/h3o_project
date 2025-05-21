@@ -7,7 +7,6 @@ from tests.API_tests.conftest import read_config, registered_user, logger
 def test_delete_user(read_config, registered_user, logger):
     base_url = read_config['URL']
 
-    # Шаг 1: логин и получение токена на основе registered_user
     login_payload = {
         "email": registered_user["email"],
         "password": registered_user["password"]
@@ -23,8 +22,10 @@ def test_delete_user(read_config, registered_user, logger):
         "Content-Type": "application/json"
     }
 
-    # Шаг 2: удаление пользователя
+    # Удаление пользователя
     r_delete = requests.delete(f"{base_url}/users/me", headers=headers)
+
+    #Проверки
     assert r_delete.status_code == 200, f"Удаление не удалось: {r_delete.status_code} {r_delete.text}"
     assert r_delete.text.strip() == "", "Ответ при удалении должен быть пустым"
 

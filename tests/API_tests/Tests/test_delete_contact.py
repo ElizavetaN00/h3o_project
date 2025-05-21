@@ -34,7 +34,7 @@ def test_create_and_delete_contact(read_config, auth_token, registered_user, log
     contact_id = r_create.json().get("_id")
     assert contact_id, "ID контакта не получен из ответа"
 
-    # удаление созданного контакта
+    # Удаление созданного контакта
     r_delete = requests.delete(f"{url_contacts}/{contact_id}", headers=headers)
     logger.info(f"Удаление контакта:{r_delete.status_code}, {r_delete.text}")
     assert r_delete.status_code == 200, "Контакт не был удалён"
@@ -44,3 +44,4 @@ def test_create_and_delete_contact(read_config, auth_token, registered_user, log
     assert r_check.status_code in [404, 400], "Контакт всё ещё существует после удаления"
 
     logger.info(f"Контакт успешно удалён и больше не существует: {contact_id}")
+    logger.info(f"Cтатус: {r_check.status_code}")
