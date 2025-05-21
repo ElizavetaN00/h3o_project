@@ -14,7 +14,7 @@ class AddContact(BasePage):
         self.click_button(ContactListPageLocators.add_contact_button)
 
 
-    def enter_data(self, first_name = None, last_name = None, birthdate = None,
+    def enter_new_contact(self, first_name = None, last_name = None, birthdate = None,
                    email = None, phone = None, street1 = None, street2 = None,
                    city = None, state_province = None, postal_code = None, country = None):
 

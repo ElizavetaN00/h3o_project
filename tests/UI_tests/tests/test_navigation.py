@@ -7,7 +7,7 @@ from tests.UI_tests.pages.base_page import BasePage
 
 
 @pytest.mark.navigation
-@pytest.mark.start_page
+@pytest.mark.test_start_page
 class TestStartPage:
 
     @pytest.mark.smoke

@@ -27,8 +27,8 @@ class SimonUserCreds:
 
 
 @dataclasses.dataclass
-class AliceContactCreds:
-    contact_info = {
+class ContactCreds:
+    alice_contact_info = {
         "first_name": "Alice",
         "last_name": "Green",
         "birthdate": "1997-08-09",
@@ -42,4 +42,26 @@ class AliceContactCreds:
         "country": "USA"
     }
 
-    return_contact_info = list(contact_info.values())
+    return_alice_contact_info = list(alice_contact_info.values())
+
+    emoji_contact_info = {
+        'first_name': 'Alice😉',
+        'last_name': '🍇Green',
+        'street1': '1101 Summit St😃',
+        'street2': '244 Aspen Hills Ct😀',
+        'city': '🤯Evanston',
+        'state_province': '🍉WY',
+        'country': 'USA👾'
+    }
+
+    special_symbol_contact_info = {
+        'first_name': 'Alíce',
+        'last_name': "O'Green",
+        'email': 'alíce.s+mít@test.com',
+        'phone': '+1(650)7599755',
+        'street1': '1101# Summit St',
+        'street2': '244$ Aspen Hills Ct',
+        'city': '<Evanston>',
+        'state_province': '&WY',
+        'country': '{USA}'
+    }

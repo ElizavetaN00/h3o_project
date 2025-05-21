@@ -47,3 +47,6 @@ class BasePage:
         if len(error_message) > 0:
             return error_message[0].text
         return None
+
+    def return_text_from_element(self, locator):
+        return self.driver.find_element(*locator).text

@@ -14,7 +14,7 @@ class AddUserPage(BasePage):
         self.password_input = RegistrationPageLocators.password
         assert self.is_url_correct(Env.addUser_url)
 
-    def enter_data(self, first_name, last_name, email, password):
+    def enter_data_user_registration(self, first_name, last_name, email, password):
         self.send_text(self.first_name_input, first_name)
         self.send_text(self.last_name_input, last_name)
         self.send_text(self.email_input, email)
