@@ -2,7 +2,7 @@
 h3o 
 
 # Project Title
-Test framework for automated testing of the [Contact List App](https://thinking-tester-contact-list.herokuapp.com/) project
+A Python-based automation testing framework for the **Contact List App**, covering both UI and API testing. The project follows the Page Object Model (POM) pattern and incorporates best practices in automated testing.
 
 # Project structure
 ```
@@ -63,3 +63,50 @@ Test framework for automated testing of the [Contact List App](https://thinking-
 ├── README.md
 └── requirements.txt
 ```
+
+# Technologies Used
+- Python
+- PyTest
+- Selenium
+- Requests
+- Logging
+- Faker
+- PyTest Fixtures
+- OOP (Object-Oriented Programming)
+- Allure Reports
+- Docker
+- Jenkins
+- GitHub
+- Postman
+- Kaiten
+
+# How to install
+Clone this repository:
+
+```bash
+git clone https://github.com/ElizavetaN00/h3o_project.git
+
+Create a virtual environment and activate it:
+pip install virtualenv
+cd ~/projects/pytest-framework
+virtualenv venv
+source venv/bin/activate     # for Linux/macOS
+venv\Scripts\activate.bat    # for Windows
+
+Install dependencies:
+pip install -r requirements.txt
+
+To execute ALL tests:
+pytest .
+
+To execute UI tests:
+cd .\tests\UI_tests\
+pytest .
+
+To execute API tests:
+cd .\tests\API_tests\
+
+To execute marks in UI tests:
+cd .\tests\UI_tests\
+pytest .
+pytest -m {mark}
