@@ -2,7 +2,10 @@
 h3o 
 
 # Project Title
-A Python-based automation testing framework for the **Contact List App**, covering both UI and API testing. The project follows the Page Object Model (POM) pattern and incorporates best practices in automated testing.
+A Python-based automation testing framework for the **Contact List App**, covering both UI and API testing. The project follows the Page Object Model pattern and incorporates best practices in automated testing.
+
+# Project Overview
+The Contact List App is a web application with a simple design, that allows users to manage their contacts information (for personal or professional purposes). Users can register, log in, and manage their personal contact list in a secure way. All the contact data is private and inaccessible to other users. The product is made for users, who need easy, user-friendly app for managing their contacts.
 
 # Project structure
 ```
