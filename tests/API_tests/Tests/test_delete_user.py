@@ -13,21 +13,20 @@ def test_delete_user(read_config, registered_user, logger):
     }
 
     r_login = requests.post(f"{base_url}/users/login", json=login_payload)
-    assert r_login.status_code == 200, f"Авторизация не удалась: {r_login.status_code} {r_login.text}"
+    assert r_login.status_code == 200, f"Authorization failed: {r_login.status_code} {r_login.text}"
     token = r_login.json().get("token")
-    assert token, "Токен не получен"
+    assert token, "Token not received"
 
     headers = {
         "Authorization": f"Bearer {token}",
         "Content-Type": "application/json"
     }
 
-    # Удаление пользователя
     r_delete = requests.delete(f"{base_url}/users/me", headers=headers)
 
-    #Проверки
-    assert r_delete.status_code == 200, f"Удаление не удалось: {r_delete.status_code} {r_delete.text}"
-    assert r_delete.text.strip() == "", "Ответ при удалении должен быть пустым"
+    # Checks
+    assert r_delete.status_code == 200, f"Removal failed: {r_delete.status_code} {r_delete.text}"
+    assert r_delete.text.strip() == "", "The answer when deleting must be empty"
 
-    logger.info("Пользователь успешно удалён.")
-    logger.info(f"Cтатус: {r_delete.status_code}")
+    logger.info("User successfully deleted.")
+    logger.info(f"Status: {r_delete.status_code}")

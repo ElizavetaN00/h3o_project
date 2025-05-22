@@ -20,11 +20,11 @@ def test_user_login(read_config, registered_user, logger):
 
     json_data = response.json()
 
-    # Проверки
-    assert response.status_code == 200, "Логин не удался"
-    assert "token" in json_data, "Токен отсутствует в ответе"
+    # Checks
+    assert response.status_code == 200, "Login failed"
+    assert "token" in json_data, "Token is missing from the response"
     assert isinstance(json_data["token"], str) and len(json_data["token"]) > 10
 
-    logger.info("Авторизация прошла успешно. Получен токен.")
-    logger.info(f"Статус: {response.status_code}")
-    logger.info(f"Ответ: {response.text}")
+    logger.info(f"Authorization was successful. Token received.")
+    logger.info(f"Status: {response.status_code}")
+    logger.info(f"Response: {response.text}")
