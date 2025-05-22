@@ -17,7 +17,7 @@ def test_update_contact_patch(read_config, auth_token, registered_user, logger, 
         "phone": fake.msisdn()[:10],
         "street1": fake.street_address(),
         "street2": fake.secondary_address(),
-        "city": fake.city(),
+        "city": fake.city()[:40],
         "stateProvince": fake.state_abbr(),
         "postalCode": fake.postcode(),
         "country": fake.country()
