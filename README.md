@@ -96,6 +96,8 @@ venv\Scripts\activate.bat    # for Windows
 Install dependencies:
 pip install -r requirements.txt
 
+# How to run tests
+
 To execute ALL tests:
 pytest .
 
@@ -113,4 +115,4 @@ To execute marks in UI tests:
 cd .\tests\UI_tests\          # for Windows
 cd ./tests/UI_tests/          # for Linux/macOS
 pytest .
-pytest -m {mark}
+pytest -m "mark"
