@@ -11,7 +11,7 @@ class TestStartPage:
 
     @pytest.mark.smoke
     @pytest.mark.critical_path
-    @pytest.mark.aceptance
+    @pytest.mark.acceptance
     def test_open_start_page(self, driver, logger):
         osp = BasePage(driver, Env.url, logger)
 
