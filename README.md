@@ -98,21 +98,25 @@ pip install -r requirements.txt
 ```
 
 # How to run
-```
-To execute ALL tests:
-pytest .
 
+To execute ALL tests:
+```
+pytest .
+```
 To execute UI tests:
+```
 cd .\tests\UI_tests\          # for Windows
 cd ./tests/UI_tests/          # for Linux/macOS
 pytest .
-
+```
 To execute API tests:
+```
 cd .\tests\API_tests\         # for Windows
 cd ./tests/API_tests/         # for Linux/macOS
 pytest .
-
+```
 To execute marks in UI tests:
+```
 cd .\tests\UI_tests\          # for Windows
 cd ./tests/UI_tests/          # for Linux/macOS
 pytest .
