@@ -39,5 +39,5 @@ def test_update_contact_put(read_config, auth_token, registered_user, logger, he
     logger.info(f"Status: {response.status_code}")
     logger.info(f"Contact with ID created: {contact_id}")
     logger.info(f"Contact updated via PUT: {contact_id}")
-    logger.info(f"New email: {updated_contact["email"]}")
-    logger.info(f"New phone: {updated_contact["phone"]}")
+    logger.info(f"New email: {updated_contact['email']}")
+    logger.info(f"New phone: {updated_contact['phone']}")
