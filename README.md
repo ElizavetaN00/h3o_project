@@ -98,7 +98,7 @@ pip install -r requirements.txt
 ```
 
 # How to run
-
+```
 To execute ALL tests:
 pytest .
 
@@ -117,3 +117,4 @@ cd .\tests\UI_tests\          # for Windows
 cd ./tests/UI_tests/          # for Linux/macOS
 pytest .
 pytest -m "mark"
+```
