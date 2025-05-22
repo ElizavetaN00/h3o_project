@@ -6,17 +6,21 @@ from tests.UI_tests.pages.base_page import BasePage
 
 
 class AddContact(BasePage):
-
-    def __init__(self, driver, url):
-        super().__init__(driver, url)
+    def __init__(self, driver, url, logger):
+        super().__init__(driver, url, logger)
+        self.logger = logger
         self.log_in(SimonUserCreds.email,
                     SimonUserCreds.password)
         self.click_button(ContactListPageLocators.add_contact_button)
 
-
     def enter_new_contact(self, first_name = None, last_name = None, birthdate = None,
                    email = None, phone = None, street1 = None, street2 = None,
                    city = None, state_province = None, postal_code = None, country = None):
+        self.logger.info('Entering new contact with first name: %s, last name: %s, birthdate: %s, '
+                         'email: %s, phone: %s, street1: %s, street2: %s, city: %s, '
+                         'state_province: %s, postal_code: %s, country: %s',
+                         first_name, last_name, birthdate, email, phone,
+                         street1, street2, city, state_province, postal_code, country)
 
         if first_name is not None:
             self.send_text(AddContactPageLocators.first_name, first_name)
@@ -43,8 +47,8 @@ class AddContact(BasePage):
 
         self.click_button(AddContactPageLocators.submit_button)
 
-
     def table_contact_list(self):
+        self.logger.info('Getting table contact list')
         contact_list = []
         every_cell_info_elements = self.waiting_for_all_elements(ContactListPageLocators.every_cell)
         every_cell_info = [eci.text for eci in every_cell_info_elements]
@@ -54,12 +58,10 @@ class AddContact(BasePage):
 
         return contact_list
 
-
     @staticmethod
     def convert_to_line(first_name = '', last_name = '', birthdate = '', email = '',
                         phone = '', street1 = '', street2 = '', city = '',
                         state_province = '', postal_code = '', country = ''):
-
         data = [' '.join((first_name, last_name)), birthdate, email, phone,
                 ' '.join((street1, street2)), ' '.join((city, state_province, postal_code)),
                 country]

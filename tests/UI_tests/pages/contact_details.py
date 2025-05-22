@@ -1,9 +1,12 @@
-from tests.UI_tests.data_test.locators import ContactListPageLocators, ContactDetailsPageLocators, \
-    EditContactPageLocators
+from tests.UI_tests.data_test.locators import (ContactListPageLocators, ContactDetailsPageLocators,
+                                               EditContactPageLocators)
 from tests.UI_tests.pages.add_contact import AddContact
 
 
 class ContactDetails(AddContact):
+    def __init__(self, driver, url, logger):
+        super().__init__(driver, url, logger)
+        self.logger = logger
 
     @staticmethod
     def find_name_in_table(table: list, line: list) -> tuple | None:
@@ -14,6 +17,7 @@ class ContactDetails(AddContact):
         return None
 
     def contact_details_list(self):
+        self.logger.info('Getting contact details list')
         return [self.return_text_from_element(ContactDetailsPageLocators.first_name),
                 self.return_text_from_element(ContactDetailsPageLocators.last_name),
                 self.return_text_from_element(ContactDetailsPageLocators.birthdate),
@@ -44,6 +48,7 @@ class ContactDetails(AddContact):
                 country if country is not None else '']
 
     def edit_contact_details_list(self):
+        self.logger.info('Getting edit contact details list')
         return [self.return_text_from_input_field(EditContactPageLocators.first_name),
                 self.return_text_from_input_field(EditContactPageLocators.last_name),
                 self.return_text_from_input_field(EditContactPageLocators.birthdate),

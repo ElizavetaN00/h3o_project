@@ -4,9 +4,9 @@ from tests.UI_tests.pages.base_page import BasePage
 
 
 class AddUserPage(BasePage):
-
-    def __init__(self, driver, url):
-        super().__init__(driver, url)
+    def __init__(self, driver, url, logger):
+        super().__init__(driver, url, logger)
+        self.logger = logger
         self.click_button(StartPageLocators.sign_up_button)
         self.first_name_input = RegistrationPageLocators.first_name
         self.last_name_input = RegistrationPageLocators.last_name
@@ -15,6 +15,9 @@ class AddUserPage(BasePage):
         assert self.is_url_correct(Env.addUser_url)
 
     def enter_data_user_registration(self, first_name, last_name, email, password):
+        self.logger.info('Entering data for user registration with first name: %s, '
+                         'last name: %s, email: %s, password: %s',
+                         first_name, last_name, email, password)
         self.send_text(self.first_name_input, first_name)
         self.send_text(self.last_name_input, last_name)
         self.send_text(self.email_input, email)

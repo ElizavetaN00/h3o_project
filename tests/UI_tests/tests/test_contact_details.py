@@ -7,7 +7,6 @@ from tests.UI_tests.data_test.env import Env
 from tests.UI_tests.data_test.locators import ContactDetailsPageLocators, EditContactPageLocators
 from tests.UI_tests.pages.contact_details import ContactDetails
 
-
 @pytest.mark.contact_management
 @pytest.mark.test_contact_details
 class TestContactDetails:
@@ -15,9 +14,8 @@ class TestContactDetails:
     @pytest.mark.smoke
     @pytest.mark.critical_path
     @pytest.mark.acceptance
-    def test_view_contact_details_page(self, driver):
-
-        view_contact_details = ContactDetails(driver, Env.url)
+    def test_view_contact_details_page(self, driver, logger):
+        view_contact_details = ContactDetails(driver, Env.url, logger)
         data = view_contact_details.list_of_input_add_contact(first_name=ContactCreds.alice_contact_info['first_name'],
                                                               last_name=ContactCreds.alice_contact_info['last_name'])
         view_contact_details.enter_new_contact(*data)
@@ -33,8 +31,8 @@ class TestContactDetails:
     @pytest.mark.smoke
     @pytest.mark.critical_path
     @pytest.mark.acceptance
-    def test_return_to_contact_list(self, driver):
-        return_to_contact_list = ContactDetails(driver, Env.url)
+    def test_return_to_contact_list(self, driver, logger):
+        return_to_contact_list = ContactDetails(driver, Env.url, logger)
         data = return_to_contact_list.list_of_input_add_contact(first_name=ContactCreds.alice_contact_info['first_name'],
                                                                 last_name=ContactCreds.alice_contact_info['last_name'])
         return_to_contact_list.enter_new_contact(*data)
@@ -50,8 +48,8 @@ class TestContactDetails:
     @pytest.mark.smoke
     @pytest.mark.critical_path
     @pytest.mark.acceptance
-    def test_edit_contact_mandatory_fields(self, driver):
-        edit_contact = ContactDetails(driver, Env.url)
+    def test_edit_contact_mandatory_fields(self, driver, logger):
+        edit_contact = ContactDetails(driver, Env.url, logger)
         data = edit_contact.list_of_input_add_contact(first_name=ContactCreds.alice_contact_info['first_name'],
                                                       last_name=ContactCreds.alice_contact_info['last_name'])
         edit_contact.enter_new_contact(*data)
