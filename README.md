@@ -96,7 +96,7 @@ venv\Scripts\activate.bat    # for Windows
 Install dependencies:
 pip install -r requirements.txt
 
-# How to install:
+# How to run
 
 To execute ALL tests:
 pytest .
