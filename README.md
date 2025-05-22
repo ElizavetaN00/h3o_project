@@ -100,13 +100,17 @@ To execute ALL tests:
 pytest .
 
 To execute UI tests:
-cd .\tests\UI_tests\
+cd .\tests\UI_tests\          # for Windows
+cd ./tests/UI_tests/          # for Linux/macOS
 pytest .
 
 To execute API tests:
-cd .\tests\API_tests\
+cd .\tests\API_tests\         # for Windows
+cd ./tests/API_tests/         # for Linux/macOS
+pytest .
 
 To execute marks in UI tests:
-cd .\tests\UI_tests\
+cd .\tests\UI_tests\          # for Windows
+cd ./tests/UI_tests/          # for Linux/macOS
 pytest .
 pytest -m {mark}
