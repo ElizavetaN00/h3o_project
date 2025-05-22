@@ -1,17 +1,13 @@
 import pytest
 import requests
 from faker import Faker
-from tests.API_tests.conftest import read_config, auth_token, registered_user, logger
+from tests.API_tests.conftest import read_config, auth_token, registered_user, logger, headers
 
 
 
 @pytest.mark.get_contact_list
-def test_get_contact_list(read_config, auth_token, registered_user, logger):
+def test_get_contact_list(read_config, auth_token, registered_user, logger, headers):
     url = f"{read_config['URL']}/contacts"
-    headers = {
-        "Authorization": f"Bearer {auth_token}",
-        "Content-Type": "application/json"
-    }
 
     fake = Faker()
     def generate_contact():
@@ -29,21 +25,21 @@ def test_get_contact_list(read_config, auth_token, registered_user, logger):
             "country": fake.country()
         }
 
-    # Создание первого контакта
+    # Creating 1st contact
     contact_1 = generate_contact()
     response_1 = requests.post(url, headers=headers, json=contact_1)
-    assert response_1.status_code == 201, f"Ошибка при создании 1 контакта: {response_1.status_code} {response_1.text}"
+    assert response_1.status_code == 201, f"Error creating 1 contact: {response_1.status_code} {response_1.text}"
 
-    # Создание второго контакта
+    # Creating 2nd contact
     contact_2 = generate_contact()
     response_2 = requests.post(url, headers=headers, json=contact_2)
-    assert response_2.status_code == 201, f"Ошибка при создании 2 контакта: {response_2.status_code} {response_2.text}"
+    assert response_2.status_code == 201, f"Error creating 2 contact: {response_2.status_code} {response_2.text}"
 
-    # Получение списка контактов
+    # Getting a list of contacts
     r_get = requests.get(url, headers=headers)
-    assert r_get.status_code == 200, "Не удалось получить список контактов"
+    assert r_get.status_code == 200, "Failed to get contact list"
     contacts = r_get.json()
-    assert len(contacts) >= 2, "В списке должно быть как минимум два контакта"
+    assert len(contacts) >= 2, "There must be at least two contacts in the list"
 
-    logger.info(f"Контакт-лист успешно получен: {r_get.text}")
-    logger.info(f"Статус: {r_get.status_code}")
+    logger.info(f"Contact list successfully received: {r_get.text}")
+    logger.info(f"Status: {r_get.status_code}")

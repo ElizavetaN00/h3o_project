@@ -89,3 +89,11 @@ def logger():
         logger.addHandler(handler)
         logger.setLevel(logging.INFO)
     return logger
+
+
+@pytest.fixture
+def headers(auth_token):
+    return {
+        "Authorization": f"Bearer {auth_token}",
+        "Content-Type": "application/json"
+    }

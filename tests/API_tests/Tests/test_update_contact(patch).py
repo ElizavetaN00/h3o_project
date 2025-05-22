@@ -1,17 +1,12 @@
 import pytest
 import requests
 from faker import Faker
-from tests.API_tests.conftest import read_config, auth_token, registered_user, logger
+from tests.API_tests.conftest import read_config, auth_token, registered_user, logger, headers
 
 
 @pytest.mark.update_contact_patch
-def test_update_contact_patch(read_config, auth_token, registered_user, logger):
+def test_update_contact_patch(read_config, auth_token, registered_user, logger, headers):
     url_contacts = f"{read_config['URL']}/contacts"
-
-    headers = {
-        "Authorization": f"Bearer {auth_token}",
-        "Content-Type": "application/json"
-    }
 
     fake = Faker()
     contact_payload = {
@@ -29,25 +24,24 @@ def test_update_contact_patch(read_config, auth_token, registered_user, logger):
     }
 
     r_post = requests.post(url_contacts, headers=headers, json=contact_payload)
-    assert r_post.status_code == 201, f"Ошибка при создании контакта: {r_post.status_code} {r_post.text}"
+    assert r_post.status_code == 201, f"Error creating contact: {r_post.status_code} {r_post.text}"
     contact_id = r_post.json().get("_id")
 
-    # Обновляем контакт через PATCH
+    # Updating the contact via PATCH
     patch_payload = {
         "email": fake.unique.email(),
         "phone": fake.msisdn()[:10]
     }
 
     r_patch = requests.patch(f"{url_contacts}/{contact_id}", headers=headers, json=patch_payload)
-    assert r_patch.status_code == 200, f"Ошибка PATCH-запроса: {r_patch.status_code} {r_patch.text}"
+    assert r_patch.status_code == 200, f"PATCH request error: {r_patch.status_code} {r_patch.text}"
 
-    # Проверки
+    # Checks
     updated = r_patch.json()
     assert updated["email"] == patch_payload["email"]
     assert updated["phone"] == patch_payload["phone"]
 
-    logger.info(f"Статус: {r_patch.status_code}")
-    logger.info("Создан контакт с ID: %s", contact_id)
-    logger.info("Обновлённые данные: email=%s, phone=%s", updated['email'], updated['phone'])
-    logger.info("PATCH прошёл успешно для пользователя %s %s", registered_user['firstName'],
-                registered_user['lastName'])
+    logger.info(f"Status: {r_patch.status_code}")
+    logger.info(f"Contact with ID created: {contact_id}")
+    logger.info(f"Updated data: email: {updated['email']}, phone: {updated['phone']}")
+    logger.info(f"PATCH was successful for the user: {registered_user['firstName']} {registered_user['lastName']}")

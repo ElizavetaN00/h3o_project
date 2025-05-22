@@ -1,17 +1,12 @@
 import pytest
 import requests
 from faker import Faker
-from tests.API_tests.conftest import read_config, auth_token, registered_user, logger
+from tests.API_tests.conftest import read_config, auth_token, registered_user, logger, headers
 
 
 @pytest.mark.add_contact
-def test_add_contact(read_config, auth_token, registered_user, logger):
+def test_add_contact(read_config, auth_token, registered_user, logger, headers):
     url = f"{read_config['URL']}/contacts"
-
-    headers = {
-        "Authorization": f"Bearer {auth_token}",
-        "Content-Type": "application/json"
-    }
 
     fake = Faker()
 
@@ -33,11 +28,11 @@ def test_add_contact(read_config, auth_token, registered_user, logger):
 
     response_json = response.json()
 
-    # Проверки
-    assert response.status_code == 201, f"Контакт не создан: {response.status_code}, {response.text}"
+    # Checks
+    assert response.status_code == 201, f"Contact not created: {response.status_code}, {response.text}"
     assert response_json["firstName"] == contact_payload["firstName"]
     assert response_json["email"] == contact_payload["email"]
     assert "_id" in response_json
 
-    logger.info(f"Статус: {response.status_code}")
-    logger.info(f"Ответ: {response.text}")
+    logger.info(f"Status: {response.status_code}")
+    logger.info(f"Response: {response.text}")
