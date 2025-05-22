@@ -19,7 +19,7 @@ def test_get_contact_list(read_config, auth_token, registered_user, logger, head
             "phone": fake.msisdn()[:10],
             "street1": fake.street_address(),
             "street2": fake.secondary_address(),
-            "city": fake.city()[:40],
+            "city": fake.city(),
             "stateProvince": fake.state_abbr(),
             "postalCode": fake.postcode(),
             "country": fake.country()
