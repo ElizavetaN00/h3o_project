@@ -12,7 +12,7 @@ class TestUserLogin:
 
     @pytest.mark.smoke
     @pytest.mark.critical_path
-    @pytest.mark.aceptance
+    @pytest.mark.acceptance
     def test_valid_credentials(self, driver, logger):
         valcreds = BasePage(driver, Env.url, logger)
         valcreds.log_in(SimonUserCreds.email, SimonUserCreds.password)
@@ -76,7 +76,7 @@ class TestUserLogin:
 
     @pytest.mark.smoke
     @pytest.mark.critical_path
-    @pytest.mark.aceptance
+    @pytest.mark.acceptance
     def test_log_out(self, driver, logger):
         log_out = BasePage(driver, Env.url, logger)
         log_out.log_in(SimonUserCreds.email, SimonUserCreds.password)

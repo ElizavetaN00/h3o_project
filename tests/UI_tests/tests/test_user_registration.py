@@ -12,7 +12,7 @@ class TestUserRegistration:
 
     @pytest.mark.smoke
     @pytest.mark.critical_path
-    @pytest.mark.aceptance
+    @pytest.mark.acceptance
     def test_valid_credentials(self, driver, logger):
         valcreds = AddUserPage(driver, Env.url, logger)
         valcreds.enter_data_user_registration(RegistrationUserCreds.first_name, RegistrationUserCreds.last_name,
